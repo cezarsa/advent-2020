@@ -1,3 +1,4 @@
+//usr/bin/env go build -o /tmp/4.out "$0" && exec /tmp/4.out "$@"
 package main
 
 import (
