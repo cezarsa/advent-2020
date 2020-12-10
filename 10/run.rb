@@ -12,17 +12,14 @@ def part1(input)
     }.tap{ |x| x[1] += 1 }.reduce(1, :*)
 end
 
-def traverse_dynamic(graph, node, wanted, level=0, memo={})
+def traverse_dynamic(graph, node, wanted, memo={})
     return 1 if node == wanted
-    key = [node, level]
-    if memo.has_key? key
-        return memo[key]
-    end
+    return memo[node] if memo.has_key? node
     paths = 0
     graph[node].each do |p|
-        paths += traverse_dynamic(graph, p, wanted, level+1, memo)
+        paths += traverse_dynamic(graph, p, wanted, memo)
     end
-    memo[key] = paths
+    memo[node] = paths
     return paths
 end
 
